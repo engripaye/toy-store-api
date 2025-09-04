@@ -31,12 +31,13 @@ def add_toys(toy: Toy):
 
 
 # READ (Get all toys)
+@app.get("/toys/")
 def get_toys():
     return {"toys": toys}
 
 
 # READ (Get a single toy by ID)
-@app.get("/toys/{toys_id}")
+@app.get("/toys/{toy_id}")
 def get_toy(toy_id: int):
     for toy in toys:
         if toy["id"] == toy_id:
@@ -61,4 +62,3 @@ def delete_toy(toy_id: int):
             deleted = toys.pop(index)
             return {"message": "Toy deleted successfully", "toys": deleted}
         raise HTTPException(status_code=404, detail="Toy not found")
-
