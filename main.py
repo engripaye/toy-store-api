@@ -32,7 +32,7 @@ def create_toy(toy: schemas.ToyCreate, db: Session = Depends(get_db)):
 # READ (Get all toys)
 @app.get("/toys/", response_model=list[schemas.Toy])
 def read_toys(db: Session = Depends(get_db)):
-    return db.query(models).Toy.all()
+    return db.query(models.Toy).all()
 
 
 # READ (Get a single toy by ID)
