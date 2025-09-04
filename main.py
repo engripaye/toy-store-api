@@ -2,14 +2,14 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-# initilaize fast api app
+# initialize fast api app
 app = FastAPI(title="Toy store Api", version="1.0")
 
 # In-memory database
 toys = []
 
 
-# pyandic model(defines structures of data)
+# pydantic model(defines structures of data)
 class Toy(BaseModel):
     id: int
     name: str
@@ -29,4 +29,10 @@ def add_toys(toy: Toy):
     toys.append(toy.dict())
     return {"message": "toys added successfully", "toy": toy}
 
+
 # READ (Get all toys)
+def get_toys():
+    return {"toys": toys}
+
+# READ (Get a single toy by ID)
+

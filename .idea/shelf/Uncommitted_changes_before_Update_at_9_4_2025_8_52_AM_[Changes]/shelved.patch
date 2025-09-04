@@ -1,0 +1,19 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Fast api\r\nfrom fastapi import FastAPI, HTTPException\r\nfrom pydantic import BaseModel\r\n\r\n# initilaize fast api app\r\napp = FastAPI(title=\"Toy store Api\", version=\"1.0\")\r\n\r\n# In-memory database\r\ntoys = []\r\n\r\n\r\n# pyandic model(defines structures of data)\r\nclass Toy(BaseModel):\r\n    id: int\r\n    name: str\r\n    price: float\r\n    in_stock: bool\r\n\r\n\r\n# ------- CRUD ENDPOINT ------#\r\n# CREATE (Add new Toy)\r\n@app.post(\"/toys/\")\r\ndef add_toys(toy: Toy):\r\n    # check if toy id exist\r\n    for t in toys:\r\n        if t[\"id\"] == toy.id:\r\n            raise HTTPException(status_code=400, detail=\"Toy with this ID already exist\")\r\n\r\n    toys.append(toy.dict())\r\n    return {\"message\": \"toys added successfully\", \"toy\": toy}\r\n\r\n# READ (Get all toys)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision a03562ba7a3a26713ca6914f50f937382c8388c0)
++++ b/main.py	(date 1756972339471)
+@@ -9,7 +9,7 @@
+ toys = []
+ 
+ 
+-# pyandic model(defines structures of data)
++# pydandic model(defines structures of data)
+ class Toy(BaseModel):
+     id: int
+     name: str
