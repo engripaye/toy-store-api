@@ -77,3 +77,4 @@ def test_delete_toy():
     # Confirm it's gone
     response = client.get(f"/toys/{toy_id}")
     assert response.status_code == 404
+
