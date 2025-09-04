@@ -70,4 +70,4 @@ def delete_toy(toy_id: int, db: Session = Depends(get_db)):
 
     db.delete(toy)
     db.commit()
-    return {"message": "Toy deleted successfully"}
+    return {"detail": "Toy deleted successfully"}
