@@ -62,7 +62,6 @@ def test_update_toy():
     assert data["in_stock"] == True
 
 
-
 # TEST DELETE TOYS
 def test_delete_toy():
     # create a toy
