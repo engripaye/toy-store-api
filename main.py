@@ -9,6 +9,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Toy store API", version="2.0")
 
+
 # Dependency: get DB Session
 def get_db():
     db = SessionLocal()
@@ -58,7 +59,6 @@ def update_toy(toy_id: int, updated_toy: schemas.ToyCreate, db: Session = Depend
     db.commit()
     db.refresh(toy)
     return toy
-
 
 
 # Delete (Remove toy by id)

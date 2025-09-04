@@ -16,4 +16,4 @@ class Toy(ToyBase):
     id: int
 
     class Config:
-        form_attributes = True
+        from_attributes = True

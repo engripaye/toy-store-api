@@ -11,12 +11,13 @@ client = TestClient(app)
 def test_create_toy():
     response = client.post(
         "/toys/",
-        json={"name": "Football WORLD CUP", "price": 190.99}
+        json={"name": "Football WORLD CUP", "price": 190.99, "in_stock": True}
     )
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "Football WORLD CUP"
     assert data["price"] == 190.99
+    assert data["in_stock"] is True
     assert "id" in data # ID should be auto generated
 
 # TEST GET ALL TOYS
